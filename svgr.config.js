@@ -1,6 +1,6 @@
 //eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
-const outDir = './src/app/assets/icons'; // путь, до папки, где будут храниться преобразованные иконки
+const outDir = './src/assets/icons'; // путь, до папки, где будут храниться преобразованные иконки
 
 // Шаблон компонента с иконкой
 const iconTemplate = (variables, {tpl, options}) => {

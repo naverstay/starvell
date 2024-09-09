@@ -1,0 +1,77 @@
+.footer {
+  @apply md:py-24 pb-8 w-[100%] pt-8 border-t border-[#1D1D1F]/5 border-opacity-5 md:flex grid md:flex-col xl:flex-row flex-col-reverse justify-between max-w-[1440px] mx-auto md:px-16 px-8;
+  z-index: 1;
+  position: relative;
+}
+
+.navigationLinks {
+  /* @apply flex md:flex-row flex-col md:gap-x-11 gap-y-12 md:gap-y-0; */
+  @apply md:flex grid grid-cols-1  md:gap-x-12 gap-y-[42px] md:gap-y-0;
+}
+
+@media (max-width: 768px) {
+  .navigationLinks {
+    grid-template-areas:
+      'help'
+      'socials'
+      'links';
+  }
+}
+
+.navigationLinks > nav,
+.navigationLinks > div nav {
+  @apply md:!grid md:flex-col md:!leading-6 gap-y-[9px];
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.navigationLinks a {
+  @apply md:!m-0;
+}
+
+.primaryNavigationBlock {
+  @apply flex flex-col gap-x-4 gap-y-2 md:gap-x-0 flex-wrap;
+}
+
+.secondaryNavigationBlock {
+  @apply text-primary-alpha flex flex-col space-y-2 md:gap-1 md:gap-y-[10px];
+}
+
+.secondaryNavigationBlock a {
+  @apply !m-0;
+}
+
+.secondaryNavigationBlock span,
+.socials a span {
+  line-height: 140%;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.socials {
+  @apply flex flex-col flex-shrink-0;
+  row-gap: 10px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.socials img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .id_socials {
+    grid-area: socials;
+  }
+
+  .id_help {
+    grid-area: help;
+  }
+
+  .id_links {
+    grid-area: links;
+  }
+}
