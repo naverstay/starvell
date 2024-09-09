@@ -1,21 +1,11 @@
 .footer {
-  @apply w-full bg-white pt-4 pb-5 border-t border-primary-disabled grid md:flex-col justify-between mx-auto;
+  @apply w-full bg-white pt-4 pb-5 border-t border-primary-disabled;
   z-index: 1;
   position: relative;
 }
 
 .navigationLinks {
-  /* @apply flex md:flex-row flex-col md:gap-x-11 gap-y-12 md:gap-y-0; */
   @apply md:flex grid grid-cols-1  md:gap-x-12 gap-y-[42px] md:gap-y-0;
-}
-
-@media (max-width: 768px) {
-  .navigationLinks {
-    grid-template-areas:
-      'help'
-      'socials'
-      'links';
-  }
 }
 
 .navigationLinks > nav,

@@ -45,10 +45,10 @@ const MainHeader = ({className}: MainHeaderProps) => {
             />
           </Link>
 
-          <Input size="large"
+          <Input size="middle"
                  rootClassName={"w-[384px]"}
                  placeholder="Поиск игр и приложений..."
-                 prefix={<span className={"text-1 text-text-icon"}><SvgSearch/></span>}/>
+                 prefix={<span className={"text-lg text-text-icon pr-2"}><SvgSearch/></span>}/>
 
           <nav className="flex justify-start flex-1">
             <MainNavigation className="hidden lg:flex space-x-5"/>
