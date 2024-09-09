@@ -1,17 +1,19 @@
 import Container from '@/components/Container/Container'
 import Head from 'next/head'
 
-const PersonalCabinet = () => {
+const GamePage = () => {
   return (
     <>
       <Head>
-        <title>Game</title>
+        <title>Home</title>
       </Head>
-      <Container className="mt-8 overflow-hidden">
-
-      </Container>
+      <div className="flex-1 w-full max-w-[1256px] border-1 border-solid border-primary-border bg-white py-[40px] px-16 rounded-2xl">
+        <Container className="overflow-hidden">
+          <h1 className="text-gray text-6 fw-600">Робуксы Roblox</h1>
+        </Container>
+      </div>
     </>
   )
 }
 
-export default PersonalCabinet
+export default GamePage

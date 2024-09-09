@@ -1,8 +1,5 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import {useRouter} from 'next/navigation'
-import {useCallback} from 'react'
-import {useSharedState} from '@/hooks/useSharedState'
 import Link from 'next/link'
 import Container from "@/components/Container/Container";
 import {Input} from 'antd';
@@ -31,9 +28,6 @@ export const MainNavigation = ({className, isDark, mobile}: Props) => {
 }
 
 const MainHeader = ({className}: MainHeaderProps) => {
-  const router = useRouter()
-  const [, setScrollTopBtnDismissed] = useSharedState('scrollTopBtnDismissed')
-
 
   return (
     <header className={clsx(classes.header, className)}>
@@ -51,7 +45,10 @@ const MainHeader = ({className}: MainHeaderProps) => {
             />
           </Link>
 
-          <Input size="large" rootClassName={"w-[384px]"} placeholder="large size" prefix={<SvgSearch/>}/>
+          <Input size="large"
+                 rootClassName={"w-[384px]"}
+                 placeholder="Поиск игр и приложений..."
+                 prefix={<span className={"text-1 text-text-icon"}><SvgSearch/></span>}/>
 
           <nav className="flex justify-start flex-1">
             <MainNavigation className="hidden lg:flex space-x-5"/>

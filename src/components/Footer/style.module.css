@@ -1,5 +1,5 @@
 .footer {
-  @apply md:py-24 pb-8 w-[100%] pt-8 border-t border-[#1D1D1F]/5 border-opacity-5 md:flex grid md:flex-col xl:flex-row flex-col-reverse justify-between max-w-[1440px] mx-auto md:px-16 px-8;
+  @apply w-full bg-white pt-4 pb-5 border-t border-primary-disabled grid md:flex-col justify-between mx-auto;
   z-index: 1;
   position: relative;
 }

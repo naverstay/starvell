@@ -34,6 +34,7 @@ const config: Config = {
         primary: {
           DEFAULT: '#6e7076',
           disabled: '#e8ebf0',
+          border: '#f1f3f4',
         },
         blue: '#5c80fd',
         green: '#1db462',
@@ -41,7 +42,8 @@ const config: Config = {
         danger: '#ff5c5c',
         orange: '#ff8e26',
         text: {
-          placeholder: '#b9b9b9',
+          icon: '#9a9ba3',
+          placeholder: '#9e9da4',
         },
       },
       fontSize: {
