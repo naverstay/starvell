@@ -1,5 +1,5 @@
 .quickLinks {
-  @apply bg-light border-b border-[#F4F4F4] w-[100%];
+  @apply border-b w-[100%];
   z-index: 51;
 }
 
@@ -9,11 +9,11 @@
 }
 
 .quickLinksWrapper {
-  @apply max-w-[1440px] mx-auto grid lg:grid-cols-3 items-center py-[7px] text-[15px] px-16;
+  @apply max-w-[1440px] mx-auto grid items-center py-[7px] text-[15px] px-16;
 }
 
 .sex {
-  @apply border-b border-dashed border-b-[1px] border-primary-alpha/10;
+  @apply border-b border-dashed border-b-[1px];
 }
 
 .sexDark {
@@ -25,7 +25,7 @@
 }
 
 .header {
-  @apply px-6 w-[100%] lg:px-16 top-0 grid grid-cols-3 py-7 items-center max-w-[1440px] mx-auto border-b border-[#F4F4F4];
+  @apply w-full sticky top-0 items-center;
   z-index: 50;
 }
 
@@ -66,8 +66,8 @@
 }
 
 .mobileLink {
+  @apply font-primary;
   padding: 17px 24px;
-  @apply text-primary-beta font-primary;
   font-style: normal;
   font-weight: 400;
   font-size: 17px;

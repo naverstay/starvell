@@ -6,15 +6,15 @@
     "dev": "next dev -p 3003",
     "build": "next build",
     "start": "next start",
-    "icons": "svgr ./src/assets/icons_src",
+    "icons": "svgr ./src/assets/icons_src --out-dir ./src/assets/icons",
     "lint": "next lint",
     "postinstall": "patch-package && npm run icons"
   },
+  "type": "module",
   "dependencies": {
     "antd": "^5.20.6",
     "clsx": "^2.1.1",
     "next": "14.2.8",
-    "next-plugin-svgr": "^1.1.10",
     "react": "^18",
     "react-dom": "^18",
     "swr": "^2.2.5"
@@ -29,6 +29,7 @@
     "eslint-config-next": "14.2.8",
     "patch-package": "^8.0.0",
     "postcss": "^8",
+    "rc-util": "5.20.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

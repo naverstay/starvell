@@ -33,7 +33,7 @@
 }
 
 .secondaryNavigationBlock {
-  @apply text-primary-alpha flex flex-col space-y-2 md:gap-1 md:gap-y-[10px];
+  @apply flex flex-col space-y-2 md:gap-1 md:gap-y-[10px];
 }
 
 .secondaryNavigationBlock a {
