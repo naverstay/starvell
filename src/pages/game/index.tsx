@@ -3,23 +3,60 @@
 import Container from '@/components/Container/Container'
 import Head from 'next/head'
 import Image from "next/image";
-import {ROBLOX_LIST} from "@/fixtues";
+import {FILTER_LIST, ROBLOX_LIST} from "@/fixtues";
 import RolBtn from "@/components/RolBtn";
-import {RobloxIem} from "@/types";
+import {FilterIem, RobloxIem} from "@/types";
 import {GetStaticProps} from "next";
-import React from "react";
+import React, {useCallback, useMemo, useState} from "react";
+import {Button} from "antd";
+import classes from "@/components/Header/style.module.css";
 
 
 interface Props {
   robloxList: RobloxIem[];
+  filterList: FilterIem[];
 }
 
 export const getStaticProps = (async (context) => {
-  return {props: {robloxList: ROBLOX_LIST,}}
+  return {props: {robloxList: ROBLOX_LIST, filterList: FILTER_LIST}}
 }) satisfies GetStaticProps<Props>
 
 export default function GamePage(props: Props) {
-  const {robloxList} = props;
+  const [activeFilter, setActiveFilter] = useState<number[]>([-1]);
+  const {robloxList, filterList} = props;
+
+  const filterClick = useCallback((item: FilterIem) => {
+    let newFilter = [-1]
+
+    if (item.index !== -1) {
+      const find = activeFilter.findIndex(f => f === item.index)
+
+      if (find === -1) {
+        newFilter = [...activeFilter, item.index]
+      } else {
+        newFilter = activeFilter.filter((f, fi) => (fi !== find))
+      }
+
+      newFilter = [...newFilter.filter(f => f !== -1)]
+    }
+
+    setActiveFilter(newFilter.length ? newFilter : [-1])
+  }, [activeFilter])
+
+  const filterItems: FilterIem[] = useMemo(() => {
+    return [
+      {
+        index: -1,
+        name: 'Все'
+      },
+      ...filterList.map((m, mi) => {
+        return {
+          index: mi,
+          name: m.name
+        }
+      })
+    ]
+  }, [filterList])
 
   return (
     <>
@@ -41,7 +78,7 @@ export default function GamePage(props: Props) {
 
               <div className="flex flex-wrap gap-2 my-6">
                 {robloxList?.map((m, mi) => {
-                  return <RolBtn key={mi} {...m} />
+                  return <RolBtn key={mi} {...m}/>
                 }) ?? null}
               </div>
             </div>
@@ -57,6 +94,25 @@ export default function GamePage(props: Props) {
                 sizes="100vw"
               />
             </div>
+          </div>
+
+          <div className="flex justify-between ">
+
+            <div className="flex flex-wrap gap-2 my-6">
+              {filterItems?.map((m, mi) => {
+                return <RolBtn
+                  key={mi} {...m}
+                  active={activeFilter.includes(m.index)}
+                  action={(a) => {
+                    filterClick(a);
+                  }}
+                />
+              }) ?? null}
+            </div>
+
+            <Button className={"ml-2"}>
+              <span className={classes.btnText}>Продать Blox Fruits</span>
+            </Button>
           </div>
 
           <div className="mt-10 border-t-[1px] pt-6 border-solid border-primary-border text-[14px] leading-5">

@@ -1,4 +1,25 @@
-import {RobloxIem} from "@/types";
+import {FilterIem, RobloxIem} from "@/types";
+
+export const FILTER_LIST: FilterIem[] = [
+  {
+    name: 'Бели'
+  },
+  {
+    name: 'Аккаунты'
+  },
+  {
+    name: 'Предметы'
+  },
+  {
+    name: 'VIP-сервер'
+  },
+  {
+    name: 'Услуги'
+  },
+  {
+    name: 'Гайды'
+  },
+]
 
 export const ROBLOX_LIST: RobloxIem[] = [
   {
