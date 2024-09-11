@@ -1,4 +1,27 @@
-.promoWrapper {
 
+.filterSearch {
+  @apply items-center justify-between mr-auto relative;
 }
 
+.filterSearch input {
+  @apply py-1.5 pr-10 pl-3 rounded transition duration-100 ease-out;
+  width: 317px;
+  outline: 0;
+  min-height: 36px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  box-shadow: 0px 0px 0px 1px #12376914, 0px 1px 2px 0px #a4acb93d;
+}
+
+.filterSearch input:focus {
+  box-shadow: 0px 0px 0px 1px #4665d2, 0px 1px 2px 0px #3959cc80;
+}
+
+.filterSearchIcon {
+  @apply absolute right-2 flex text-text-icon;
+  top: 50%;
+  pointer-events: none;
+  transform: translateY(-50%);
+  font-size: 1.125rem;
+}

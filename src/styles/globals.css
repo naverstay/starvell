@@ -185,3 +185,7 @@ html::-moz-scrollbar {
   @apply bg-white hover:bg-gray/[.08] active:bg-gray/[.08];
   box-shadow: 0px 0px 0px 1px #12376914, 0px 1px 2px 0px #a4acb93d;
 }
+
+.btnLarge {
+  min-height: 36px;
+}

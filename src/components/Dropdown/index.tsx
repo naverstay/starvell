@@ -12,12 +12,13 @@ interface Props {
   list: MenuPropsItem[],
   activeIndex: number,
   onAction: (index: MenuPropsItem) => void
+  btnClass?: string,
   placeholder?: string,
   className?: string,
 }
 
 export default function DropdownMenu(props: Props) {
-  const {list, activeIndex, placeholder, onAction, className} = props;
+  const {list, activeIndex, placeholder, onAction, className, btnClass = ''} = props;
 
   const clickHandle = useCallback((item: MenuPropsItem) => {
     onAction(item)
@@ -37,7 +38,7 @@ export default function DropdownMenu(props: Props) {
   return (
     <div className={className}>
       <Menu>
-        <MenuButton className={clsx("group data-[open]:bg-blue/[.08]", "btnDefault")}>
+        <MenuButton className={clsx("group data-[open]:bg-blue/[.08] btnDefault", btnClass)}>
           <span className="selectText">
               {value}
           </span>

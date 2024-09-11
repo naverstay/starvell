@@ -1,12 +1,14 @@
 export interface RobloxIem {
   name: string,
-  count: number,
+  count?: number,
+  index?: number,
+  action?: (a: FilterIem) => void,
   active?: boolean
 }
 
 export interface FilterIem {
   name: string,
-  index: number,
+  index?: number,
   action?: (a: FilterIem) => void,
   active?: boolean
 }
