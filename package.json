@@ -8,14 +8,11 @@
     "start": "next start",
     "icons": "svgr ./src/assets/icons_src",
     "lint": "next lint",
-    "antcss": "node ./genAntdCss.mjs",
     "postinstall": "patch-package && npm run icons"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.21.1",
-    "@ant-design/nextjs-registry": "^1.0.1",
     "@headlessui/react": "^2.1.6",
-    "antd": "^5.20.6",
+    "@headlessui/tailwindcss": "^0.2.1",
     "clsx": "^2.1.1",
     "next": "14.2.9",
     "react": "^18",

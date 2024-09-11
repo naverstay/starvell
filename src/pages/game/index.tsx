@@ -8,16 +8,14 @@ import RolBtn from "@/components/RolBtn";
 import {FilterIem, RobloxIem} from "@/types";
 import {GetStaticProps} from "next";
 import React, {useCallback, useMemo, useState} from "react";
-import {Button} from "antd";
-import classes from "./style.module.css";
-import clsx from "clsx";
+import {Button} from '@headlessui/react'
 
 interface Props {
   robloxList: RobloxIem[];
   filterList: FilterIem[];
 }
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   return {props: {robloxList: ROBLOX_LIST, filterList: FILTER_LIST}}
 }) satisfies GetStaticProps<Props>
 
@@ -112,7 +110,7 @@ export default function GamePage(props: Props) {
               }) ?? null}
             </div>
 
-            <Button className={clsx("ml-2", "btnLarge")}>
+            <Button className={"ml-2 btnDefault btnBlue"}>
               <span className={"btnText"}>Продать Blox Fruits</span>
             </Button>
           </div>

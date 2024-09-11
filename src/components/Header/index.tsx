@@ -1,13 +1,13 @@
-import clsx from 'clsx'
+import {clsx} from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from "@/components/Container/Container";
-import {Button, Flex, Input} from 'antd';
-import SvgSearch from "@/assets/icons/Search";
+import {Button, Field, Input} from '@headlessui/react'
 import classes from './style.module.css'
-import {useMemo, useState} from "react";
+import {useState} from "react";
 import {MenuPropsItem} from "@/types";
 import DropdownMenu from "@/components/Dropdown";
+import SvgSearch from "@/assets/icons/Search";
 
 interface MainHeaderProps {
   className?: string
@@ -51,34 +51,22 @@ const MainHeader = ({className}: MainHeaderProps) => {
     },
   ];
 
-  const handleMenuClick = (e) => {
+  const handleMenuClick = (e: MenuPropsItem) => {
     setMenu(e.key);
   };
 
-  const handleLangClick = (e) => {
+  const handleLangClick = (e: MenuPropsItem) => {
     setLang(e.key);
   };
 
-  const handleCurrencyClick = (e) => {
+  const handleCurrencyClick = (e: MenuPropsItem) => {
     setCurrency(e.key);
   };
 
-  const activeMenu = useMemo(() => {
-    return menuItems?.find(f => f.key === menu)?.label
-  }, [menu])
-
-  const activeLang = useMemo(() => {
-    return langItems?.find(f => f.key === lang)?.label
-  }, [lang])
-
-  const activeCurrency = useMemo(() => {
-    return currencyItems?.find(f => f.key === currency)?.label
-  }, [currency])
-
   return (
-    <header className={clsx(classes.header, className)}>
+    <header className={clsx(classes.header, className || '')}>
       <Container>
-        <Flex gap="50px" justify={"space-between"} align={"center"} className={classes.headerWrapper}>
+        <div className={classes.headerWrapper}>
           <Link href={'/'} className={"flex items-center cursor-pointer"}>
             <Image
               src={'/logo.svg'}
@@ -91,40 +79,41 @@ const MainHeader = ({className}: MainHeaderProps) => {
             />
           </Link>
 
-          <div className="w-[384px]">
-            <Input size="middle"
-                   placeholder="Поиск игр и приложений..."
-                   prefix={<span
-                     className={"text-lg text-text-icon pr-2"}><SvgSearch/></span>}/>
-          </div>
+          <Field className={classes.headerSearch}>
+            <span className={classes.headerSearchIcon}><SvgSearch/></span>
+            <Input placeholder="Поиск игр и приложений..."/>
+          </Field>
 
           <nav className="flex justify-end gap-1 flex-1">
             <DropdownMenu
+              className={"ml-2"}
               placeholder={"Выберите из списка"}
               list={menuItems}
               activeIndex={menuItems.findIndex(f => f.key === menu)}
               onAction={handleMenuClick}/>
 
             <DropdownMenu
+              className={"-ml-3"}
               placeholder={"Выберите из списка"}
               list={langItems}
               activeIndex={langItems.findIndex(f => f.key === lang)}
               onAction={handleLangClick}/>
 
             <DropdownMenu
+              className={"-ml-3"}
               placeholder={"Выберите из списка"}
               list={currencyItems}
               activeIndex={currencyItems.findIndex(f => f.key === currency)}
               onAction={handleCurrencyClick}/>
 
-            <Button className={"ml-2"}>
+            <Button className="ml-2 btnDefault btnWhite">
               <span className={"btnText"}>Вход</span>
             </Button>
-            <Button className={"ml-0.5"} type="primary">
+            <Button className="ml-0.5 btnDefault btnBlue">
               <span className={"btnText"}>Регистрация</span>
             </Button>
           </nav>
-        </Flex>
+        </div>
       </Container>
     </header>
   )

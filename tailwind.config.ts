@@ -9,7 +9,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-
       fontFamily: {
         primary: 'var(--font-primary)'
       },
@@ -60,7 +59,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@headlessui/tailwindcss')
+  ],
 };
 export default config;
 

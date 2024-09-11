@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import {ConfigProvider} from 'antd';
 import {ReactNode, useEffect} from 'react'
 import Footer from '../Footer'
 import Header from '../Header'
 import {usePathname} from 'next/navigation'
-import theme from "@/theme/themeConfig";
 
 export default function Layout({children}: { children: ReactNode }) {
   const pathname = usePathname()
@@ -14,7 +12,7 @@ export default function Layout({children}: { children: ReactNode }) {
   }, [pathname])
 
   return (
-    <ConfigProvider theme={theme}>
+    <>
       <Head>
         <title>{{title: 'page title'}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -28,6 +26,6 @@ export default function Layout({children}: { children: ReactNode }) {
         </main>
         <Footer/>
       </div>
-    </ConfigProvider>
+    </>
   )
 }

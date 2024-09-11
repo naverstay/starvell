@@ -152,10 +152,6 @@ html::-moz-scrollbar {
   height: 0px;
 }
 
-button.btnLarge {
-  height: 36px;
-}
-
 .selectText {
   font-size: 14px;
   font-weight: 400;
@@ -168,10 +164,24 @@ button.btnLarge {
   font-weight: 500;
   letter-spacing: .02em;
   font-size: .875rem;
-  margin: 0 -0.2rem;
+  line-height: 1;
 }
 
 .btnIcon {
   font-size: 1rem;
   margin-right: -.5rem;
+}
+
+.btnDefault {
+  @apply flex gap-2 transition duration-100 ease-out items-center rounded py-1.5 px-3 hover:bg-blue/[.08]
+}
+
+.btnBlue {
+  @apply text-white bg-blue hover:bg-blue/[.8] active:bg-blue/[.8];
+  box-shadow: 0px 0px 0px 1px #4665d2, 0px 1px 2px 0px #3959cc80;
+}
+
+.btnWhite {
+  @apply bg-white hover:bg-gray/[.08] active:bg-gray/[.08];
+  box-shadow: 0px 0px 0px 1px #12376914, 0px 1px 2px 0px #a4acb93d;
 }

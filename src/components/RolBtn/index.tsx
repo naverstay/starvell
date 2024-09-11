@@ -1,6 +1,6 @@
 import {RobloxIem} from "@/types";
 import {clsx} from "clsx";
-import {Button} from "antd";
+import {Button} from '@headlessui/react'
 
 export const RolBtn = (item: RobloxIem & { large: boolean }) => {
   const {name, count, active, action, large = false} = item;
@@ -15,7 +15,7 @@ export const RolBtn = (item: RobloxIem & { large: boolean }) => {
   );
 
   return (
-    <Button type={"text"} className={className} onClick={action ? () => {
+    <Button className={className} onClick={action ? () => {
       action(item);
     } : undefined}>
       <span className={"text-[14px] font-medium leading-5"}>{name}</span>
