@@ -1,42 +1,112 @@
 .footer {
-  width: 100%;
-  border-top: 1px solid rgb(232 235 240);
-  background-color: rgb(255 255 255);
-  padding-top: 1rem;
-  padding-bottom: 1.25rem;
-  z-index: 1;
-  position: relative;
+  @apply pb-8 w-full pt-4 border-t border-[#E8EBF0] bg-white grid relative;
 }
 
-.navigationLinks {
-  display: flex;
-  column-gap: 3rem;
-  row-gap: 0;
+.footerSoc {
+  @apply flex text-[20px] cursor-pointer relative border-[2px] rounded-full items-center justify-center;
+  width: 44px;
+  height: 44px;
+  background: #ffffff0a;
+  background: radial-gradient(66.57% 66.57% at 65.41% 33.43%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.245) 100%);
+  border-image-source: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.49) 100%);
 }
 
-.navigationLinks > nav,
-.navigationLinks > div nav {
-  @apply md:!grid md:flex-col md:!leading-6 gap-y-[9px];
-  grid-template-rows: repeat(3, 1fr);
+.footerSoc::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  border-radius: inherit;
+  border: 1px solid;
+  box-shadow: inset 0 0 0 1px #fff;
 }
 
-.navigationLinks a {
-  @apply md:!m-0;
+.footerSoc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  border: 1px solid;
+  transition: transform .1s;
 }
 
-.primaryNavigationBlock {
-  @apply flex flex-col gap-x-4 gap-y-2 md:gap-x-0 flex-wrap;
+.footerSoc:hover::before {
+  transform: rotate(180deg);
 }
 
-.secondaryNavigationBlock {
-  @apply flex flex-col space-y-2 md:gap-1 md:gap-y-[10px];
+.footerSocTg {
+  color: #37bbfe;
+  box-shadow: 0px 0px 12.8px 5.6px #23a5e60a inset;
 }
 
-.secondaryNavigationBlock a {
-  @apply !m-0;
+.footerSocTg::before {
+  background: linear-gradient(180deg, rgba(35, 165, 230, 0.32) 0%, rgba(35, 165, 230, 0.1664) 100%);
+  border-image-source: linear-gradient(180deg, rgba(35, 165, 230, 0.32) 0%, rgba(35, 165, 230, 0.1664) 100%);
 }
 
-.secondaryNavigationBlock span,
+/*.footerSocTg:hover::before {*/
+/*  background: linear-gradient(0deg, rgba(35, 165, 230, 0.32) 0%, rgba(35, 165, 230, 0.1664) 100%);*/
+/*  border-image-source: linear-gradient(0deg, rgba(35, 165, 230, 0.32) 0%, rgba(35, 165, 230, 0.1664) 100%);*/
+/*}*/
+
+.footerSocDc {
+  color: #5865f2;
+  box-shadow: 0px 0px 12.8px 5.6px #5865f20a inset;
+}
+
+.footerSocDc::before {
+  background: linear-gradient(180deg, rgba(88, 101, 242, 0.32) 0%, rgba(88, 101, 242, 0.1664) 100%);
+  border-image-source: linear-gradient(180deg, rgba(88, 101, 242, 0.32) 0%, rgba(88, 101, 242, 0.1664) 100%);
+}
+
+/*.footerSocDc:hover::before {*/
+/*  background: linear-gradient(0deg, rgba(88, 101, 242, 0.32) 0%, rgba(88, 101, 242, 0.1664) 100%);*/
+/*  border-image-source: linear-gradient(0deg, rgba(88, 101, 242, 0.32) 0%, rgba(88, 101, 242, 0.1664) 100%);*/
+/*}*/
+
+.footerSocVk {
+  color: #4680c2;
+  box-shadow: 0px 0px 12.8px 5.6px #4680c20a inset;
+}
+
+.footerSocVk::before {
+  background: linear-gradient(180deg, rgba(70, 128, 194, 0.32) 0%, rgba(70, 128, 194, 0.1664) 100%);
+  border-image-source: linear-gradient(180deg, rgba(70, 128, 194, 0.32) 0%, rgba(70, 128, 194, 0.1664) 100%);
+}
+
+/*.footerSocVk:hover::before {*/
+/*  background: linear-gradient(0deg, rgba(70, 128, 194, 0.32) 0%, rgba(70, 128, 194, 0.1664) 100%);*/
+/*  border-image-source: linear-gradient(0deg, rgba(70, 128, 194, 0.32) 0%, rgba(70, 128, 194, 0.1664) 100%);*/
+/*}*/
+
+.footerSocYt {
+  color: #ff5c5c;
+  box-shadow: 0px 0px 12.8px 5.6px #4680c20a inset;
+}
+
+.footerSocYt::before {
+  background: linear-gradient(180deg, rgba(255, 92, 92, 0.32) 0%, rgba(255, 92, 92, 0.1664) 100%);
+  border-image-source: linear-gradient(180deg, rgba(255, 92, 92, 0.32) 0%, rgba(255, 92, 92, 0.1664) 100%);
+}
+
+/*.footerSocYt:hover::before {*/
+/*  background: linear-gradient(0deg, rgba(255, 92, 92, 0.32) 0%, rgba(255, 92, 92, 0.1664) 100%);*/
+/*  border-image-source: linear-gradient(0deg, rgba(255, 92, 92, 0.32) 0%, rgba(255, 92, 92, 0.1664) 100%);*/
+/*}*/
+
+.footerCol {
+  @apply flex flex-col gap-2;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  max-width: 300px;
+}
+
 .socials a span {
   line-height: 140%;
   align-items: center;
@@ -56,18 +126,4 @@
 .socials img {
   width: 24px;
   height: 24px;
-}
-
-@media (max-width: 768px) {
-  .id_socials {
-    grid-area: socials;
-  }
-
-  .id_help {
-    grid-area: help;
-  }
-
-  .id_links {
-    grid-area: links;
-  }
 }
