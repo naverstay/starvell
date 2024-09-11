@@ -9,8 +9,8 @@ import {FilterIem, RobloxIem} from "@/types";
 import {GetStaticProps} from "next";
 import React, {useCallback, useMemo, useState} from "react";
 import {Button} from "antd";
-import classes from "@/components/Header/style.module.css";
-
+import classes from "./style.module.css";
+import clsx from "clsx";
 
 interface Props {
   robloxList: RobloxIem[];
@@ -96,12 +96,14 @@ export default function GamePage(props: Props) {
             </div>
           </div>
 
-          <div className="flex justify-between ">
+          <div className="flex justify-between border-t-[1px] pt-4 border-solid border-primary-border">
 
-            <div className="flex flex-wrap gap-2 my-6">
+            <div className="flex flex-wrap gap-2">
               {filterItems?.map((m, mi) => {
                 return <RolBtn
-                  key={mi} {...m}
+                  key={mi}
+                  {...m}
+                  large={true}
                   active={activeFilter.includes(m.index)}
                   action={(a) => {
                     filterClick(a);
@@ -110,8 +112,8 @@ export default function GamePage(props: Props) {
               }) ?? null}
             </div>
 
-            <Button className={"ml-2"}>
-              <span className={classes.btnText}>Продать Blox Fruits</span>
+            <Button className={clsx("ml-2", "btnLarge")}>
+              <span className={"btnText"}>Продать Blox Fruits</span>
             </Button>
           </div>
 

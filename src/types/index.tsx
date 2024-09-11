@@ -11,7 +11,7 @@ export interface FilterIem {
   active?: boolean
 }
 
-export interface MenuPropsItems {
+export interface MenuPropsItem {
   label: string,
   key: string
 }

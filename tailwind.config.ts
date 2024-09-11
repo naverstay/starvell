@@ -1,6 +1,7 @@
 import type {Config} from "tailwindcss";
 
 const config: Config = {
+  // important: true,
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +9,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+
       fontFamily: {
         primary: 'var(--font-primary)'
       },
@@ -15,6 +17,7 @@ const config: Config = {
         1: '1',
         2: '2',
         3: '3',
+        100: '100',
       },
       animation: {
         popup: 'wiggle .25s ease-in-out',

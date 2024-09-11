@@ -2,12 +2,12 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from "@/components/Container/Container";
-import {Button, Dropdown, Flex, Input, MenuProps} from 'antd';
+import {Button, Flex, Input} from 'antd';
 import SvgSearch from "@/assets/icons/Search";
 import classes from './style.module.css'
-import SvgChevronDown from "@/assets/icons/ChevronDown";
 import {useMemo, useState} from "react";
-import {MenuPropsItems} from "@/types";
+import {MenuPropsItem} from "@/types";
+import DropdownMenu from "@/components/Dropdown";
 
 interface MainHeaderProps {
   className?: string
@@ -18,7 +18,7 @@ const MainHeader = ({className}: MainHeaderProps) => {
   const [lang, setLang] = useState('1')
   const [menu, setMenu] = useState('1')
 
-  const currencyItems: MenuPropsItems[] = [
+  const currencyItems: MenuPropsItem[] = [
     {
       label: 'RUB',
       key: '1',
@@ -29,7 +29,7 @@ const MainHeader = ({className}: MainHeaderProps) => {
     },
   ];
 
-  const menuItems: MenuPropsItems[] = [
+  const menuItems: MenuPropsItem[] = [
     {
       label: 'Поддержка',
       key: '1',
@@ -40,7 +40,7 @@ const MainHeader = ({className}: MainHeaderProps) => {
     },
   ];
 
-  const langItems: MenuPropsItems[] = [
+  const langItems: MenuPropsItem[] = [
     {
       label: 'Русский',
       key: '1',
@@ -51,31 +51,16 @@ const MainHeader = ({className}: MainHeaderProps) => {
     },
   ];
 
-  const handleMenuClick: MenuProps['onClick'] = (e) => {
+  const handleMenuClick = (e) => {
     setMenu(e.key);
   };
 
-  const handleLangClick: MenuProps['onClick'] = (e) => {
+  const handleLangClick = (e) => {
     setLang(e.key);
   };
 
-  const handleCurrencyClick: MenuProps['onClick'] = (e) => {
+  const handleCurrencyClick = (e) => {
     setCurrency(e.key);
-  };
-
-  const langMenuProps = {
-    items: langItems,
-    onClick: handleLangClick,
-  };
-
-  const currencyMenuProps = {
-    items: currencyItems,
-    onClick: handleCurrencyClick,
-  };
-
-  const helpMenuProps = {
-    items: menuItems,
-    onClick: handleMenuClick,
   };
 
   const activeMenu = useMemo(() => {
@@ -114,30 +99,29 @@ const MainHeader = ({className}: MainHeaderProps) => {
           </div>
 
           <nav className="flex justify-end gap-1 flex-1">
-            <Dropdown className={"ml-2"} menu={helpMenuProps}>
-              <Button type={"text"}>
-                <span className={classes.selectText}>{activeMenu}</span>
-                <span className={classes.btnIcon}><SvgChevronDown/></span>
-              </Button>
-            </Dropdown>
-            <Dropdown className={"-ml-3"} menu={langMenuProps}>
-              <Button type={"text"}>
-                <span className={classes.selectText}>{activeLang}</span>
-                <span className={classes.btnIcon}><SvgChevronDown/></span>
-              </Button>
-            </Dropdown>
-            <Dropdown className={"-ml-3"} menu={currencyMenuProps}>
-              <Button type={"text"}>
-                <span className={classes.selectText}>{activeCurrency}</span>
-                <span className={classes.btnIcon}><SvgChevronDown/></span>
-              </Button>
-            </Dropdown>
+            <DropdownMenu
+              placeholder={"Выберите из списка"}
+              list={menuItems}
+              activeIndex={menuItems.findIndex(f => f.key === menu)}
+              onAction={handleMenuClick}/>
+
+            <DropdownMenu
+              placeholder={"Выберите из списка"}
+              list={langItems}
+              activeIndex={langItems.findIndex(f => f.key === lang)}
+              onAction={handleLangClick}/>
+
+            <DropdownMenu
+              placeholder={"Выберите из списка"}
+              list={currencyItems}
+              activeIndex={currencyItems.findIndex(f => f.key === currency)}
+              onAction={handleCurrencyClick}/>
 
             <Button className={"ml-2"}>
-              <span className={classes.btnText}>Вход</span>
+              <span className={"btnText"}>Вход</span>
             </Button>
             <Button className={"ml-0.5"} type="primary">
-              <span className={classes.btnText}>Регистрация</span>
+              <span className={"btnText"}>Регистрация</span>
             </Button>
           </nav>
         </Flex>
