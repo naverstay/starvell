@@ -1,6 +1,9 @@
 'use client';
 
 import RolBtn from "@/components/RolBtn";
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '@/store/store';
+import {setFlyDelivery, setOnlyOnline, setSearch} from '@/store/filterSlice';
 import {FilterItem, MenuPropsItem} from "@/types";
 import React, {useCallback, useMemo, useState} from "react";
 import {Button, Field, Input, Switch} from '@headlessui/react'
@@ -14,11 +17,13 @@ interface Props {
 }
 
 export default function Filter(props: Props) {
-  const [onlyOnline, setOnlyOnline] = useState(false)
-  const [onFlyDelivery, setOnFlyDelivery] = useState(false)
+  const dispatch = useDispatch();
+  const filter = useSelector((state: RootState) => state.filter);
   const [delivery, setDelivery] = useState('1')
   const [activeFilter, setActiveFilter] = useState<number[]>([-1]);
   const {filterList} = props;
+
+  const {onlyOnline, flyDelivery, search} = filter;
 
   const deliveryItems: MenuPropsItem[] = [
     {
@@ -35,8 +40,23 @@ export default function Filter(props: Props) {
     },
   ];
 
+  const handleOnlyOnline = useCallback((val: boolean) => {
+    //@ts-ignore
+    dispatch(setOnlyOnline(val));
+  }, [onlyOnline, dispatch]);
+
+  const handleFlyDelivery = useCallback((val: boolean) => {
+    //@ts-ignore
+    dispatch(setFlyDelivery(val));
+  }, [flyDelivery, dispatch])
+
+  const handleSearch = useCallback((val: boolean) => {
+    //@ts-ignore
+    dispatch(setSearch(val));
+  }, [search, dispatch])
+
   const filterClick = useCallback((item: FilterItem) => {
-    let newFilter = [-1]
+    let newFilter: number[] = [-1]
 
     if (item.index !== -1) {
       const find = activeFilter.findIndex(f => f === item.index)
@@ -54,17 +74,19 @@ export default function Filter(props: Props) {
   }, [activeFilter])
 
   const filterItems: FilterItem[] = useMemo(() => {
+    const list = filterList?.length ? filterList.map((m, mi) => {
+      return {
+        index: mi + 1,
+        name: m.name
+      }
+    }) : []
+
     return [
       {
         index: -1,
         name: 'Все'
       },
-      ...filterList.map((m, mi) => {
-        return {
-          index: mi + 1,
-          name: m.name
-        }
-      })
+      ...list
     ]
   }, [filterList])
 
@@ -76,7 +98,7 @@ export default function Filter(props: Props) {
     <>
       <div className="flex justify-between border-t-[1px] pt-4 border-solid border-primary-border">
         <div className="flex flex-wrap gap-1">
-          {filterItems?.map((m, mi) => {
+          {filterItems?.length ? filterItems.map((m, mi) => {
             return <RolBtn
               key={mi}
               {...m}
@@ -86,7 +108,7 @@ export default function Filter(props: Props) {
                 filterClick(m);
               }}
             />
-          }) ?? null}
+          }) : null}
         </div>
 
         <DropdownMenu
@@ -103,38 +125,36 @@ export default function Filter(props: Props) {
       </div>
 
       <div className="flex justify-between gap-1 pt-2">
-        <div className={"btnDefault btnWhite btnLarge hover:bg-white !rounded-lg"}>
+        <label className={"btnDefault btnWhite btnLarge hover:bg-white !rounded-lg"}>
           <span className={"text-[14px]"}>Только продавцы онлайн</span>
-          <span className="pointer-events-auto">
-              <Switch
-                checked={onlyOnline}
-                onChange={setOnlyOnline}
-                className="group relative flex h-4 w-7 cursor-pointer rounded-full bg-primary-disabled p-0.5 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-blue/[0.8]"
-              ><span aria-hidden="true"
-                     className="pointer-events-none inline-block size-3 translate-x-0 rounded-full bg-white ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-3"
-              />
+          <Switch
+            checked={onlyOnline}
+            onChange={handleOnlyOnline}
+            className="group relative flex h-4 w-7 cursor-pointer rounded-full bg-primary-disabled p-0.5 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-blue/[0.8]"
+          ><span aria-hidden="true"
+                 className="pointer-events-none inline-block size-3 translate-x-0 rounded-full bg-white ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-3"
+          />
           </Switch>
-          </span>
-        </div>
-        <div className={"btnDefault btnWhite btnLarge hover:bg-white !rounded-lg"}>
+        </label>
+        <label className={"btnDefault btnWhite btnLarge hover:bg-white !rounded-lg"}>
           <span className={"text-blue text-[12px]"}>
             <SvgFlash/>
           </span>
           <span className={"text-[14px]"}>Моментальная доставка</span>
-          <span className="pointer-events-auto">
-              <Switch
-                checked={onFlyDelivery}
-                onChange={setOnFlyDelivery}
-                className="group relative flex h-4 w-7 cursor-pointer rounded-full bg-primary-disabled p-0.5 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-blue/[0.8]"
-              ><span aria-hidden="true"
-                     className="pointer-events-none inline-block size-3 translate-x-0 rounded-full bg-white ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-3"
-              />
+          <Switch
+            checked={flyDelivery}
+            onChange={handleFlyDelivery}
+            className="group relative flex h-4 w-7 cursor-pointer rounded-full bg-primary-disabled p-0.5 transition-colors duration-200 ease-in-out focus:outline-none data-[checked]:bg-blue/[0.8]"
+          ><span aria-hidden="true"
+                 className="pointer-events-none inline-block size-3 translate-x-0 rounded-full bg-white ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-3"
+          />
           </Switch>
-          </span>
-        </div>
+        </label>
 
         <Field className={classes.filterSearch}>
-          <Input placeholder="Поиск по описанию лота..."/>
+          <Input value={search} onChange={(e) => {
+            handleSearch(e.target.value);
+          }} placeholder="Поиск по описанию лота..."/>
           <span className={classes.filterSearchIcon}><SvgSearch/></span>
         </Field>
       </div>

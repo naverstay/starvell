@@ -24,6 +24,8 @@ export const getStaticProps = (async () => {
 export default function GamePage(props: Props) {
   const {robloxList, filterList, adsLst} = props;
 
+
+
   return (
     <>
       <Head>

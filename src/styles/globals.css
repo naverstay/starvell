@@ -173,7 +173,7 @@ html::-moz-scrollbar {
 }
 
 .btnDefault {
-  @apply flex gap-2 transition duration-100 ease-out items-center justify-center rounded py-1.5 px-3 hover:bg-blue/[.08]
+  @apply cursor-pointer flex gap-2 transition duration-100 ease-out items-center rounded py-1.5 px-3 hover:bg-blue/[.08]
 }
 
 .btnBlue {

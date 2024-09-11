@@ -3,18 +3,21 @@
 import Image from "next/image";
 import RolBtn from "@/components/RolBtn";
 import {RobloxItem} from "@/types";
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
+import {setTags} from "@/store/filterSlice";
+import {useDispatch} from "react-redux";
 
 interface Props {
   robloxList: RobloxItem[];
 }
 
 export default function Tags(props: Props) {
-  const [activeTag, setActiveTag] = useState<number[]>([10]);
+  const dispatch = useDispatch();
+  const [activeTag, setActiveTag] = useState<number[]>([]);
   const {robloxList} = props;
 
   const tagClick = useCallback((item: RobloxItem) => {
-    let newFilter = []
+    let newFilter: number[] = []
 
     if (item.index !== -1) {
       const find = activeTag.findIndex(f => f === item.index)
@@ -29,19 +32,23 @@ export default function Tags(props: Props) {
     }
 
     setActiveTag(newFilter)
-  }, [activeTag])
-
+  }, [activeTag]);
 
   const tagItems: RobloxItem[] = useMemo(() => {
-    return [
+    return robloxList?.length ? [
       ...robloxList.map((m, mi) => {
         return {
           ...m,
           index: mi + 1
         }
       })
-    ]
+    ] : []
   }, [robloxList])
+
+  useEffect(() => {
+    //@ts-ignore
+    dispatch(setTags(tagItems?.filter(f => activeTag.includes(f.index))?.map(m => m.name)))
+  }, [activeTag, tagItems])
 
   return (
     <div className="flex">

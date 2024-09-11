@@ -57,7 +57,7 @@ export default function DropdownMenu(props: Props) {
                   onClick={() => {
                     clickHandle(m)
                   }}
-                  className={clsx("w-full", "btnDefault")}>{m.label}</Button>
+                  className={clsx("w-full btnDefault justify-end")}>{m.label}</Button>
               </MenuItem>
             })
           }

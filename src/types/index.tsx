@@ -10,7 +10,7 @@ export interface Seller {
 export interface adItem {
   text: string,
   count: number | string,
-  price: number,
+  price: number | string,
   flyDelivery?: boolean
   pinned?: boolean
   seller?: Seller
