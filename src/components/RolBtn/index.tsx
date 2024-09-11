@@ -1,8 +1,8 @@
-import {RobloxIem} from "@/types";
+import {RobloxItem} from "@/types";
 import {clsx} from "clsx";
 import {Button} from '@headlessui/react'
 
-export const RolBtn = (item: RobloxIem & { large?: boolean, action?: () => void }) => {
+export const RolBtn = (item: RobloxItem & { large?: boolean, action?: () => void }) => {
   const {name, count, active, action, large = false} = item;
 
   const className = clsx("flex items-center rounded gap-1.5 px-3",

@@ -2,25 +2,27 @@
 
 import Container from '@/components/Container/Container'
 import Head from 'next/head'
-import {FILTER_LIST, ROBLOX_LIST} from "@/fixtues";
-import {FilterIem, RobloxIem} from "@/types";
+import {AD_LIST, FILTER_LIST, ROBLOX_LIST} from "@/fixtues";
+import {adItem, FilterItem, RobloxItem} from "@/types";
 import {GetStaticProps} from "next";
 import React from "react";
 import Infos from "@/pages/game/Infos";
 import Filter from "@/pages/game/Filter";
 import Tags from "@/pages/game/Tags";
+import Games from "@/pages/game/Games";
 
 interface Props {
-  robloxList: RobloxIem[];
-  filterList: FilterIem[];
+  adsLst: adItem[];
+  robloxList: RobloxItem[];
+  filterList: FilterItem[];
 }
 
 export const getStaticProps = (async () => {
-  return {props: {robloxList: ROBLOX_LIST, filterList: FILTER_LIST}}
+  return {props: {robloxList: ROBLOX_LIST, filterList: FILTER_LIST, adsLst: AD_LIST}}
 }) satisfies GetStaticProps<Props>
 
 export default function GamePage(props: Props) {
-  const {robloxList, filterList} = props;
+  const {robloxList, filterList, adsLst} = props;
 
   return (
     <>
@@ -33,6 +35,8 @@ export default function GamePage(props: Props) {
           <Tags robloxList={robloxList}/>
 
           <Filter filterList={filterList}/>
+
+          <Games list={adsLst}/>
 
           <Infos/>
         </Container>

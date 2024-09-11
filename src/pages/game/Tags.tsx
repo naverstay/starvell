@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import RolBtn from "@/components/RolBtn";
-import {RobloxIem} from "@/types";
+import {RobloxItem} from "@/types";
 import React, {useCallback, useMemo, useState} from "react";
 
 interface Props {
-  robloxList: RobloxIem[];
+  robloxList: RobloxItem[];
 }
 
 export default function Tags(props: Props) {
   const [activeTag, setActiveTag] = useState<number[]>([10]);
   const {robloxList} = props;
 
-  const tagClick = useCallback((item: RobloxIem) => {
+  const tagClick = useCallback((item: RobloxItem) => {
     let newFilter = []
 
     if (item.index !== -1) {
@@ -32,7 +32,7 @@ export default function Tags(props: Props) {
   }, [activeTag])
 
 
-  const tagItems: RobloxIem[] = useMemo(() => {
+  const tagItems: RobloxItem[] = useMemo(() => {
     return [
       ...robloxList.map((m, mi) => {
         return {
