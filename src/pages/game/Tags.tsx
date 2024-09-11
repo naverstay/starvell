@@ -46,8 +46,8 @@ export default function Tags(props: Props) {
   }, [robloxList])
 
   useEffect(() => {
-    //@ts-ignore
-    dispatch(setTags(tagItems?.filter(f => activeTag.includes(f.index))?.map(m => m.name)))
+    //@###ts-expect-error
+    dispatch(setTags(tagItems?.filter(f => f?.index ? activeTag.includes(f.index) : false)?.map(m => m.name)))
   }, [activeTag, tagItems])
 
   return (

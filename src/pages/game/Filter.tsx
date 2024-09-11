@@ -41,17 +41,17 @@ export default function Filter(props: Props) {
   ];
 
   const handleOnlyOnline = useCallback((val: boolean) => {
-    //@ts-ignore
+    //@###ts-expect-error
     dispatch(setOnlyOnline(val));
   }, [onlyOnline, dispatch]);
 
   const handleFlyDelivery = useCallback((val: boolean) => {
-    //@ts-ignore
+    //@###ts-expect-error
     dispatch(setFlyDelivery(val));
   }, [flyDelivery, dispatch])
 
-  const handleSearch = useCallback((val: boolean) => {
-    //@ts-ignore
+  const handleSearch = useCallback((val: string) => {
+    //@###ts-expect-error
     dispatch(setSearch(val));
   }, [search, dispatch])
 
