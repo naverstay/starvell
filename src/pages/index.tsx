@@ -11,7 +11,7 @@ const Home = ({}: Props) => {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="flex-1 border-1 border-solid border-primary-border bg-white py-[40px] px-16 rounded-2xl">
+      <div className="content">
         <Container className="overflow-hidden">
           <p>Home</p>
         </Container>

@@ -1,11 +1,17 @@
 .footer {
-  @apply w-full bg-white pt-4 pb-5 border-t border-primary-disabled;
+  width: 100%;
+  border-top: 1px solid rgb(232 235 240);
+  background-color: rgb(255 255 255);
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
   z-index: 1;
   position: relative;
 }
 
 .navigationLinks {
-  @apply md:flex grid grid-cols-1  md:gap-x-12 gap-y-[42px] md:gap-y-0;
+  display: flex;
+  column-gap: 3rem;
+  row-gap: 0;
 }
 
 .navigationLinks > nav,

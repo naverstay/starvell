@@ -3,11 +3,36 @@
 @tailwind utilities;
 
 :root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
   --font-primary: 'Inter', sans-serif;
 }
 
 body {
-  font: 400 16px/24px var(--font-primary);
+  font: 400 16px/24px Inter, sans-serif;
+
 }
 
 img[height] {
@@ -29,10 +54,6 @@ img[height] {
   cursor: not-allowed;
 }
 
-.brd {
-  border: 1px solid red;
-}
-
 .no-scrollBar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -47,14 +68,6 @@ img[height] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.dark {
-  background-color: #0d0d0d;
-}
-
-.light {
-  background-color: #fff;
 }
 
 ::-webkit-scrollbar {
