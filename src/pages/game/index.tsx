@@ -6,9 +6,20 @@ import Image from "next/image";
 import {ROBLOX_LIST} from "@/fixtues";
 import RolBtn from "@/components/RolBtn";
 import {RobloxIem} from "@/types";
+import {GetStaticProps} from "next";
+import React from "react";
 
-const GamePage = () => {
-  const robloxList: RobloxIem[] = ROBLOX_LIST;
+
+interface Props {
+  robloxList: RobloxIem[];
+}
+
+export const getStaticProps = (async (context) => {
+  return {props: {robloxList: ROBLOX_LIST,}}
+}) satisfies GetStaticProps<Props>
+
+export default function GamePage(props: Props) {
+  const {robloxList} = props;
 
   return (
     <>
@@ -29,9 +40,9 @@ const GamePage = () => {
               </p>
 
               <div className="flex flex-wrap gap-2 my-6">
-                {robloxList.map((m, mi) => {
+                {robloxList?.map((m, mi) => {
                   return <RolBtn key={mi} {...m} />
-                })}
+                }) ?? null}
               </div>
             </div>
 
@@ -120,5 +131,3 @@ const GamePage = () => {
     </>
   )
 }
-
-export default GamePage
