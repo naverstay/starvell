@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useMemo} from "react";
+import React, {useMemo, useState} from "react";
 import classes from "./style.module.css";
 import {clsx} from "clsx";
 import SvgSort from "@/assets/icons/Sort";
@@ -10,6 +10,7 @@ import {getCountFormat, getFormatPrice, getPlural} from "@/helpers";
 import SvgFlash from "@/assets/icons/Flash";
 import SvgPin from "@/assets/icons/Pin";
 import Image from "next/image";
+import {Button} from "@headlessui/react";
 
 interface Props {
   list: adItem[]
@@ -44,16 +45,21 @@ const SellerBlock = (props: Seller) => {
 }
 
 export default function Games(props: Props) {
+  const [showMore, setShowMore] = useState(2)
   const {list} = props;
 
   const ads = useMemo(() => {
-    return [...list, ...list].map((m, mi) => {
-      const sellerIndex = mi % SELLER_LIST.length;
-      const count = m.count === -1 ? '∞' : getCountFormat(m.count);
-      const price = getFormatPrice(m.price, true);
-      return {...m, count, price, seller: SELLER_LIST[sellerIndex]}
-    })
-  }, [list])
+    let ret = [];
+    for (let i = 0; i < showMore; i++) {
+      ret = [...ret, ...list.map((m, mi) => {
+        const sellerIndex = mi % SELLER_LIST.length;
+        const count = m.count === -1 ? '∞' : getCountFormat(m.count);
+        const price = getFormatPrice(m.price, true);
+        return {...m, count, price, seller: SELLER_LIST[sellerIndex]}
+      })]
+    }
+    return ret;
+  }, [list, showMore])
 
   return (
     <div className="mt-8">
@@ -92,6 +98,14 @@ export default function Games(props: Props) {
             </div>
           </div>
         })}
+      </div>
+
+      <div className="mt-4">
+        <Button className={"btnDefault btnXLarge btnWhite w-full"} onClick={() => {
+          setShowMore(showMore + 1);
+        }}>
+          <span className={"text-gray font-medium"}>Показать больше предложений</span>
+        </Button>
       </div>
     </div>
   )

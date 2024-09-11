@@ -39,6 +39,10 @@
   border-bottom: 1px solid #e8ebf0;
 }
 
+.gameTableData:last-child {
+  border-bottom: 0;
+}
+
 .gameTableHead {
   font-size: 14px;
   font-weight: 400;
