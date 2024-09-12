@@ -36,7 +36,7 @@ export default function DropdownMenu(props: Props) {
   }, [list, activeIndex, placeholder])
 
   return (
-    <div className={className}>
+    <div className={clsx("relative", className)}>
       <Menu>
         <MenuButton className={clsx("group data-[open]:bg-gray/[.08] btnDefault", btnClass)}>
           <span className="selectText">
@@ -47,8 +47,7 @@ export default function DropdownMenu(props: Props) {
 
         <MenuItems
           transition
-          anchor="bottom start"
-          className="origin-top-right z-101 relative rounded p-1 gap-1 border-[1px] border-solid border-primary-disabled text-sm/6 bg-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+          className="absolute top-full right-0 min-w-full mt-2 z-101 rounded-lg p-1 gap-1 border-[1px] border-solid border-primary-disabled text-sm/6 bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
         >
           {
             menuList.map((m, mi) => {
