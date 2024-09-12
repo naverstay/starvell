@@ -13,6 +13,8 @@ export interface adItem {
   price: number | string,
   flyDelivery?: boolean
   pinned?: boolean
+  verified?: boolean
+  trusted?: boolean
   seller?: Seller
 }
 

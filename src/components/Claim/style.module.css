@@ -1,0 +1,42 @@
+.claim {
+  position: relative;
+}
+
+.claimControls {
+  @apply rounded-lg border-[1px] border-solid border-primary-disabled p-2 text-sm/6 text-text-placeholder !shadow-none;
+}
+
+.claimSymbolCounter {
+  @apply absolute bottom-2 right-6 px-1 font-medium text-text-placeholder;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+}
+
+.claimText {
+  @apply block w-full min-h-[86px];
+  max-height: calc(100vh - 400px);
+}
+
+.claimDragDrop {
+  @apply cursor-pointer ease-out flex border-none flex-col items-center justify-center text-gray gap-2 pt-4 pb-2;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='99.85%25' height='99.85%25' fill='none' rx='8' ry='8' stroke='%239E9DA4FF' stroke-width='1' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 8px;
+  transition: background .3s;
+}
+
+.claimDragDrop:hover {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='99.85%25' height='99.85%25' fill='none' rx='8' ry='8' stroke='%23000000FF' stroke-width='1' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.claimDragDropTitle {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.claimTitle {
+  @apply font-semibold text-gray mb-6;
+  font-size: 20px;
+  line-height: 28px;
+}

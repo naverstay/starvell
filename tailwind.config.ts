@@ -17,6 +17,7 @@ const config: Config = {
         2: '2',
         3: '3',
         100: '100',
+        101: '101',
       },
       animation: {
         popup: 'wiggle .25s ease-in-out',
@@ -39,6 +40,7 @@ const config: Config = {
           border: '#f1f3f4',
         },
         blue: '#5c80fd',
+        action: '#274fdc',
         green: '#1db462',
         gray: '#36394a',
         danger: '#ff5c5c',

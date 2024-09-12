@@ -38,7 +38,7 @@ export default function DropdownMenu(props: Props) {
   return (
     <div className={className}>
       <Menu>
-        <MenuButton className={clsx("group data-[open]:bg-blue/[.08] btnDefault", btnClass)}>
+        <MenuButton className={clsx("group data-[open]:bg-gray/[.08] btnDefault", btnClass)}>
           <span className="selectText">
               {value}
           </span>
@@ -47,8 +47,8 @@ export default function DropdownMenu(props: Props) {
 
         <MenuItems
           transition
-          anchor="bottom end"
-          className="origin-top-right z-100 rounded p-1 gap-1 border-[1px] border-solid border-primary-border text-sm/6 bg-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+          anchor="bottom start"
+          className="origin-top-right z-101 relative rounded p-1 gap-1 border-[1px] border-solid border-primary-disabled text-sm/6 bg-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
         >
           {
             menuList.map((m, mi) => {
@@ -57,7 +57,7 @@ export default function DropdownMenu(props: Props) {
                   onClick={() => {
                     clickHandle(m)
                   }}
-                  className={clsx("w-full btnDefault justify-end")}>{m.label}</Button>
+                  className={clsx("w-full btnDefault justify-start")}>{m.label}</Button>
               </MenuItem>
             })
           }

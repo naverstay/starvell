@@ -54,6 +54,10 @@ img[height] {
   cursor: not-allowed;
 }
 
+* {
+  outline: 0;
+}
+
 .no-scrollBar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -153,10 +157,10 @@ html::-moz-scrollbar {
 }
 
 .selectText {
+  @apply text-primary;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #6e7076;
   letter-spacing: -0.025em;
 }
 
@@ -173,16 +177,16 @@ html::-moz-scrollbar {
 }
 
 .btnDefault {
-  @apply cursor-pointer flex gap-2 transition duration-100 ease-out items-center rounded py-1.5 px-3 hover:bg-blue/[.08]
+  @apply cursor-pointer flex gap-2 transition duration-100 ease-out items-center rounded py-1.5 px-3 hover:bg-[#F7F7F7] active:bg-gray/[.08]
 }
 
 .btnBlue {
-  @apply text-white bg-blue hover:bg-blue/[.8] active:bg-blue/[.8];
+  @apply text-white bg-blue hover:bg-blue/[.8] active:bg-action;
   box-shadow: 0px 0px 0px 1px #4665d2, 0px 1px 2px 0px #3959cc80;
 }
 
 .btnWhite {
-  @apply bg-white hover:bg-gray/[.08] active:bg-gray/[.08];
+  @apply bg-white active:bg-gray/[.08] hover:bg-primary-border;
   box-shadow: 0px 0px 0px 1px #12376914, 0px 1px 2px 0px #a4acb93d;
 }
 

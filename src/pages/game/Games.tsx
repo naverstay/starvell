@@ -13,6 +13,9 @@ import {Button} from "@headlessui/react";
 import SellerBlock from "@/pages/game/SellerBlock";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
+import SvgDc from "@/assets/icons/Dc";
+import SvgShield from "@/assets/icons/Shield";
+import SvgVerified from "@/assets/icons/Verified";
 
 interface Props {
   list: adItem[]
@@ -73,11 +76,13 @@ export default function Games(props: Props) {
           </span>
         </div>
         {ads?.map((item, index) => {
-          const {text, count, seller, price, flyDelivery, pinned} = item;
+          const {text, count, seller, price, flyDelivery, pinned, trusted, verified} = item;
 
-          const ExtraInfo = flyDelivery || pinned ? <div className={classes.extraInfo}>
+          const ExtraInfo = flyDelivery || pinned || verified || trusted ? <div className={classes.extraInfo}>
             {flyDelivery && <span className="text-blue"><SvgFlash/></span>}
             {pinned && <span className="text-orange"><SvgPin/></span>}
+            {trusted && <span className="text-green"><SvgShield/></span>}
+            {verified && <span className="text-blue"><SvgVerified/></span>}
           </div> : null
 
           return <div key={index} className={clsx(classes.gameTableRow, classes.gameTableData)}>

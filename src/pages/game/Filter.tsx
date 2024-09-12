@@ -11,6 +11,7 @@ import DropdownMenu from "@/components/Dropdown";
 import classes from "./style.module.css";
 import SvgSearch from "@/assets/icons/Search";
 import SvgFlash from "@/assets/icons/Flash";
+import {setModalOpen} from "@/store/modalSlice";
 
 interface Props {
   filterList: FilterItem[];
@@ -49,6 +50,11 @@ export default function Filter(props: Props) {
     //@###ts-expect-error
     dispatch(setFlyDelivery(val));
   }, [flyDelivery, dispatch])
+
+  const openModal = useCallback(() => {
+    //@###ts-expect-error
+    dispatch(setModalOpen(true))
+  }, [])
 
   const handleSearch = useCallback((val: string) => {
     //@###ts-expect-error
@@ -119,7 +125,9 @@ export default function Filter(props: Props) {
           activeIndex={deliveryItems.findIndex(f => f.key === delivery)}
           onAction={handleDeliveryClick}/>
 
-        <Button className={"ml-2 btnDefault btnBlue btnLarge"}>
+        <Button className={"ml-2 btnDefault btnBlue btnLarge"} onClick={() => {
+          openModal()
+        }}>
           <span className={"btnText"}>Продать Blox Fruits</span>
         </Button>
       </div>

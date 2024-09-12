@@ -22,7 +22,7 @@ export const SELLER_LIST: Seller[] = [
     avatar: '/user_3.png',
     rating: 5.0,
     age: '2 дня',
-    reviewsCount: 4
+    reviewsCount: 4,
   },
   {
     name: 'qewbie',
@@ -45,6 +45,8 @@ export const AD_LIST: adItem[] = [
     text: '❤ФРУКТ СПИРИТ, Premium СПИРИТ, БЛОКС ФРУКТ, SPIRIT💛💢, Предметы, Трейд',
     count: -1,
     price: 0.63,
+    verified: true,
+    trusted: true,
   },
   {
     text: '🤲Куплю и пройду рейд БУДДЫ - БУДДА РЕЙД - БУДА - место будды - Рейды буды - BUDDHA RAID - 🤲, Услуги',
@@ -60,7 +62,11 @@ export const AD_LIST: adItem[] = [
   {
     text: '💛Фрукт Будда 💛 🟡Buddha Fruit🟡, Предметы, Трейд',
     count: 104242,
-    price: 0.55
+    price: 0.55,
+    pinned: true,
+    flyDelivery: true,
+    verified: true,
+    trusted: true,
   },
   {
     text: '🧠spirit fruit | Спирит | фрукт Спирит🧠, Предметы, Трейд',

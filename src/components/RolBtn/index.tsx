@@ -5,13 +5,13 @@ import {Button} from '@headlessui/react'
 export const RolBtn = (item: RobloxItem & { large?: boolean, action?: () => void }) => {
   const {name, count, active, action, large = false} = item;
 
-  const className = clsx("flex items-center rounded gap-1.5 px-3",
+  const className = clsx("flex items-center rounded gap-1.5 px-3 transition duration-100 ease-out",
     {"py-2": large},
     {"py-1": !large},
     {"cursor-default": !action},
     {"cursor-pointer": !!action},
-    {"bg-blue hover:bg-blue/[.8] text-white": active},
-    {"bg-blue/[.08] hover:bg-blue/[.18] text-blue": !active}
+    {"bg-blue hover:bg-blue/[.8] active:bg-blue text-white": active},
+    {"bg-blue/[.08] hover:bg-blue/[.18] active:bg-blue text-blue active:text-white": !active}
   );
 
   return (
