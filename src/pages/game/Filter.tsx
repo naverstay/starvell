@@ -44,22 +44,22 @@ export default function Filter(props: Props) {
   const handleOnlyOnline = useCallback((val: boolean) => {
     //@###ts-expect-error
     dispatch(setOnlyOnline(val));
-  }, [onlyOnline, dispatch]);
+  }, [dispatch]);
 
   const handleFlyDelivery = useCallback((val: boolean) => {
     //@###ts-expect-error
     dispatch(setFlyDelivery(val));
-  }, [flyDelivery, dispatch])
+  }, [dispatch])
 
   const openModal = useCallback(() => {
     //@###ts-expect-error
     dispatch(setModalOpen(true))
-  }, [])
+  }, [dispatch])
 
   const handleSearch = useCallback((val: string) => {
     //@###ts-expect-error
     dispatch(setSearch(val));
-  }, [search, dispatch])
+  }, [dispatch])
 
   const filterClick = useCallback((item: FilterItem) => {
     let newFilter: number[] = [-1]

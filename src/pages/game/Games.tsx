@@ -13,7 +13,6 @@ import {Button} from "@headlessui/react";
 import SellerBlock from "@/pages/game/SellerBlock";
 import {useSelector} from "react-redux";
 import {RootState} from "@/store/store";
-import SvgDc from "@/assets/icons/Dc";
 import SvgShield from "@/assets/icons/Shield";
 import SvgVerified from "@/assets/icons/Verified";
 

@@ -10,23 +10,23 @@ export default function ModalDialog(
     children,
     isOpen,
     className,
-    close,
-    ...rest
+    close
   }: { isOpen: boolean, close: () => void } & PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   return (
     <Dialog
+      role="dialog"
       as="div"
       open={isOpen}
+      autoFocus={true}
       transition={true}
-      {...rest}
-      className="relative z-100 focus:outline-none"
+      className={clsx(className, "relative z-100 focus:outline-none")}
       onClose={close}>
       <div className={clsx(classes.modalOverlay)}>
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogPanel
             transition
             className={clsx(classes.modalContent, "data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0")}>
-            <div className={clsx( classes.modalCloseBtn)} onClick={() => {
+            <div className={clsx(classes.modalCloseBtn)} onClick={() => {
               close();
             }}>
               <SvgClose/>

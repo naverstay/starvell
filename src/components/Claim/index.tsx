@@ -57,7 +57,8 @@ function Claim() {
 
         <Field className="flex flex-col gap-1">
           <Label className="text-sm/6 text-primary">Доказательства</Label>
-          <div className={clsx(classes.claimControls, classes.claimDragDrop)}>
+          <label className={clsx(classes.claimControls, classes.claimDragDrop)}>
+            <input type="file" name="file-uploader" className="hidden" id="file-uploader"/>
             <div className="text-[24px]">
               <SvgUploadCloud/>
             </div>
@@ -67,7 +68,7 @@ function Claim() {
             <div>
               JPEG или PNG до 5 MB
             </div>
-          </div>
+          </label>
         </Field>
 
         <div className="flex gap-2 pt-2">
