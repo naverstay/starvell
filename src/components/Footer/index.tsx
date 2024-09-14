@@ -31,7 +31,7 @@ function Footer() {
               © 2024 STARVELL, лучший маркетплейс цифровых товаров и услуг
             </div>
             <div>
-              Дизайн сделан в 0xHearts.com
+              Дизайн сделан в <a href="#" className={clsx(classes.footerLink)}>0xHearts.com</a>
             </div>
           </div>
 
@@ -40,13 +40,15 @@ function Footer() {
               Поддержка
             </div>
             <div className="-mb-1">
-              Написать в поддержку
+              <a href={'#'} className={clsx(classes.footerLink)}>Написать в поддержку</a>
             </div>
             <div className="-mb-1">
-              Политика конфиденциальности
+              <a href={'#'} className={clsx(classes.footerLink)}>Политика
+                конфиденциальности</a>
             </div>
             <div className="-mb-1">
-              Пользовательское соглашение
+              <a href={'#'} className={clsx(classes.footerLink)}>Пользовательское
+                соглашение</a>
             </div>
           </div>
 

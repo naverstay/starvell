@@ -112,6 +112,10 @@
   max-width: 300px;
 }
 
+.footerLink {
+  @apply transition duration-100 ease-out hover:text-black hover:underline;
+}
+
 .socials a span {
   line-height: 140%;
   align-items: center;

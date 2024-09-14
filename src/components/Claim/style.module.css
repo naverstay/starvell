@@ -15,7 +15,7 @@
 
 .claimText {
   @apply block w-full min-h-[86px];
-  max-height: calc(100vh - 400px);
+  max-height: calc(100vh - 500px);
 }
 
 .claimDragDrop {
